@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+     <meta name="description" content= "Ai made to answer any qustions about Islam. ">
+    <style>
+       
+        body {
+            
+            background-image: url(image4.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+           
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+        #overlay{
+            background-color: #719c02;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .dropdown{
+            font-size: medium;
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown button {
+            font-size: small;
+            font-weight: 700;
+            width: 120px;
+            height: 24px;
+            display: inline-block;
+           
+           
+        }
+
+        .dropdown select {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: rgb(233, 233, 233);
+            border: none;
+            padding: 8px;
+            display: none;
+            box-sizing: border-box;
+        }
+        .dropdown select option {
+            background-color: #719c02;
+            color: rgb(239, 239, 239);
+            
+        }
+        .dropdown:hover select {
+            display: block;
+        }
+        #chat-container {
+           background:  #ffffffcc;
+            max-width: 800px;
+            height: 570px;
+            margin: auto;
+            border: 1px solid #000000;
+            border-radius: 10px;
+            overflow: hidden;
+box-shadow: 10px 10px 10px  rgba(87, 87, 87, 0.467);
+        }
+
+        .chat-messages {
+            
+            padding: 0;
+            margin: 0;
+             overflow-y: auto;
+             border: 2px solid #000000;
+            max-height: 290px;
+            position: relative;
+            left: 170px;
+            top: 100px;
+            
+           width: 490px;
+        }
+
+        #chat-messages li {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        .test{
+            position: relative;
+            top: 477px;
+            left: 560px;
+            font-size: smaller;
+            
+        }
+        
+      
+          
+
+        .user-input  {
+           
+            
+
+
+         position: absolute;
+         top: 460px;
+         left: 80px;
+       width: 500px;
+       outline: none;
+      
+          font-size: 1.2em;
+          padding: 0 10px;
+       line-height: 25px;
+        border-radius: 10px;
+        border: 1px solid #000000;
+         background: rgba(240, 240, 240, 0.853);
+           transition: 0.1s ease;
+         z-index: 1111;
+         resize: none;
+
+        }
+
+        .send  {
+            
+            width: 80px;
+            margin: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            top: 460px;
+            right: 40px;
+            transition: background-color 0.3s ease;
+        }
+        @media (min-width: 814px) {
+            .chat-messages{
+                position: relative;
+                left: 130px;
+            }
+           .user-input{
+            width: 100;
+           }
+       
+           
+.send{
+    width: 80px;
+    position: absolute;
+            top: 460px;
+            right: 98px;
+}
+        }
+
+        @media (min-width: 964px) {
+            .chat-messages{
+                position: relative;
+                left: 140px;
+            }
+           .user-input{
+            width: 100;
+            position: absolute;
+            left: 130px;
+           }
+           
+.send{
+    width: 80px;
+    position: absolute;
+            top: 460px;
+            right: 130px;
+}
+        }
+        
+@media (min-width: 1192px) {
+    .user-input{
+     width: 80%;
+     
+    }
+.send{
+width: 80px;
+position: absolute;
+     top: 460px;
+     right: 198px;
+}
+}
+@media (min-width: 1041px) {
+    .user-input{
+     width: 500px;
+     position: absolute;
+     top: 460px;
+     left: 190px;
+     
+    }
+.send{
+width: 80px;
+position: absolute;
+     top: 460px;
+     right: 218px;
+}
+}
+
+@media (min-width: 1189px) {
+    .user-input{
+     width: 600px;
+     position: absolute;
+     left: 210px;
+     
+    }
+.send{
+width: 80px;
+position: absolute;
+     top: 460px;
+     right: 248px;
+}
+}
+@media (min-width: 1227px) {
+    .user-input{
+        width: 600px;
+        position: absolute;
+        left: 250px;
+    }
+.send{
+width: 80px;
+position: absolute;
+     top: 460px;
+     right: 238px;
+}
+}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+   
+    <div   id="chat-container">
+        <ul class = "chat-messages" id= "chat-messages"></ul>
+        <label for="user-input"></label>
+        
+        <textarea class = "user-input" id="user-input" name="user-input" type="text" placeholder="Enter your response..."   ></textarea>
+       
+       
+       
+       
+       
+       
+        <button class= "send" id="send" type="button">Send</button>
+
+
+
+        <div class="dropdown">
+            <button>API changes:</button>
+            <select id="userDropdown" onchange="selectUser()">
+                <option value="voiceflow">Voiceflowai</option>
+                <option value="relevanceai" data-url= "testvoice.html">Relevance AI</option>
+            </select>
+        </div>
+
+        <script>
+
+            function selectUser() {
+                var dropdown = document.getElementById("userDropdown");
+                var selectedOption = dropdown.options[dropdown.selectedIndex];
+                var selectedValue = selectedOption.value;
+                var selectedUrl = selectedOption.getAttribute("data-url");
+        
+                if (selectedValue !== "" && selectedUrl) {
+                    window.location.href = selectedUrl;
+                }
+                }
+
+
+
+
+
+            </script>
+
+
+
+
+
+
+            <div id="overlay">
+                <h2>Caution.</h2>
+                <p>  This AI is in testing phase. It may not be always reilable,
+                     it may produce inaccurate and false information.</p>
+                <button onclick="closeWarning()">OK</button>
+              </div>
+<script>
+  function closeWarning() {
+    document.getElementById('overlay').style.display = 'none';
+  }
+</script>
+
+            <p class="test">  Beta Testing: 0.0.1 </p>
+    <script defer>
+        const API_KEY = "sk-YjE5ZDYxMzctZDQ2ZS00MThjLThiNGQtZWYyOWEyM2E4ZGRm";
+
+        const interact = (request) =>
+            fetch(`https://general-runtime.voiceflow.com/state/user/${encodeURI($("#name").val())}/interact
+            `, {
+                method: 'POST',
+                headers: { Authorization: API_KEY, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ request }),
+            })
+            .then((res) => res.json())
+            .then((trace) => {
+                console.log("API RESPONSE BODY:", trace);
+                trace.forEach((trace) => {
+                    if (trace.type === 'speak' || trace.type === 'text') {
+                        $("#chat-messages").append(`<li>${trace.payload.message}</li>`);
+                    } else if (trace.type === 'end') {
+                        $("#chat-messages").append(`<li><b>The End!</b></li>`);
+                    }
+                });
+                // Scroll to the bottom of the chat messages
+                $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
+            });
+
+        interact({ type: 'launch' });
+
+        async function handleSend() {
+            const userInput = $("#user-input").val();
+            $("#chat-messages").append(`<li><strong>You:</strong> ${userInput}</li>`);
+            $("#user-input").val('');
+
+            interact({ type: 'text', payload: userInput });
+        }
+       
+        $("#send").on("click", handleSend);
+
+       
+    </script>
+</body>
+</html>

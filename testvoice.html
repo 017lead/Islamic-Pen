@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="II">
+<head>
+    <style>
+        .dropdown{
+            font-size: medium;
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown button {
+            
+            font-size: small;
+            font-weight: 700;
+            width: 120px;
+            height: 24px;
+            display: inline-block;
+           
+           
+        }
+        .custom-button{
+            position: absolute;
+            left: 1px;
+        }
+
+        .dropdown select {
+            position: absolute;
+            top:100%;
+            left: 0;
+            width: 100%;
+            background-color: rgb(233, 233, 233);
+            border: none;
+            padding: 8px;
+            display: none;
+            box-sizing: border-box;
+        }
+        .dropdown select option {
+            background-color: #719c02;
+            color: rgb(239, 239, 239);
+            
+        }
+        .dropdown:hover select {
+            display: block;
+        }
+
+        .custom-button{
+            position: relative;
+            bottom: 280px;
+        }
+        body, html {
+            background-color: #3498db;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        iframe {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            bottom: 10px;
+            left: 20px;
+            width: 95%;
+            height: 90%;
+            border: none;
+        }
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+       
+
+       
+    </style>
+</head>
+<body>
+    <div id="overlay">
+        <div class="button-container">
+            
+            <script>
+                function navigateToUrl() {
+                    var button = document.querySelector('.custom-button');
+                    var url = button.getAttribute('data-url');
+                    if (url) {
+                        window.location.href = url;
+                    }
+                }
+            </script>
+
+            <div class="dropdown">
+                <button>API changes:</button>
+                <select id="userDropdown" onchange="selectUser()">
+                    <option value="voiceflow">Voiceflowai</option>
+                    <option value="relevanceai" data-url="testvoice.html">Relevance AI</option>
+                </select>
+            </div>
+            
+            <button class="custom-button" onclick="goToVoiceflow()"> Go to Voiceflow AI</button>
+            
+            <script>
+                function selectUser() {
+                    var dropdown = document.getElementById("userDropdown");
+                    var selectedOption = dropdown.options[dropdown.selectedIndex];
+                    var selectedValue = selectedOption.value;
+                    var selectedUrl = selectedOption.getAttribute("data-url");
+            
+                    if (selectedValue !== "" && selectedUrl) {
+                        window.location.href = selectedUrl;
+                    }
+                }
+                function goToVoiceflow() {
+                    window.location.href = "index.html"; // Change "index.html" to the actual filename if different
+                }
+            </script>
+            </select>
+        </div>
+    </div>
+
+    <iframe src="https://app.relevanceai.com/agents/bcbe5a/245306063db2-41d2-838c-6d57875aeb66/a05f0935-58e4-426c-a20e-bba6cda75725/share" frameborder="0"></iframe>
+
+    
+</body>
+</html>
+
