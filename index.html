@@ -10,6 +10,8 @@
             background-image: url(image4.jpg);
             background-repeat: no-repeat;
             background-position: center;
+           
+            align-content: center;
             background-attachment: fixed;
             background-size: cover;
            
@@ -64,9 +66,12 @@
             display: block;
         }
         #chat-container {
-           background:  #ffffffcc;
+            
+          
             max-width: 800px;
+            width: auto;
             height: 570px;
+            background-color: #ffffffd7;
             margin: auto;
             border: 1px solid #000000;
             border-radius: 10px;
@@ -142,6 +147,22 @@ box-shadow: 10px 10px 10px  rgba(87, 87, 87, 0.467);
             top: 460px;
             right: 40px;
             transition: background-color 0.3s ease;
+        }
+        #Report{
+            position: relative;
+
+            top: 540px;
+            right: 100px;
+            color: burlywood;
+        }
+        @media (min-width: 360px ) {
+            .chat-messages{
+                position: relative;
+                left: 130px;
+            }
+           .user-input{
+            width: 100;
+           }
         }
         @media (min-width: 814px) {
             .chat-messages{
@@ -298,6 +319,7 @@ position: absolute;
     document.getElementById('overlay').style.display = 'none';
   }
 </script>
+<a id = "Report" href= "https://forms.gle/oNUpVPp7xvdY8JvM9" target="_blank">Report a bug</a>
 
             <p class="test">  Beta Testing: 0.0.1 </p>
     <script defer>
