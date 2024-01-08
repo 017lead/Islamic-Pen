@@ -71,6 +71,7 @@
             max-width: 800px;
             width: auto;
             height: 570px;
+            
             background-color: #ffffffd7;
             margin: auto;
             border: 1px solid #000000;
@@ -150,20 +151,13 @@ box-shadow: 10px 10px 10px  rgba(87, 87, 87, 0.467);
         }
         #Report{
             position: relative;
+            top: 470px;
 
-            top: 540px;
-            right: 100px;
+left: 120px px;
+            
             color: burlywood;
         }
-        @media (min-width: 360px ) {
-            .chat-messages{
-                position: relative;
-                left: 130px;
-            }
-           .user-input{
-            width: 100;
-           }
-        }
+        
         @media (min-width: 814px) {
             .chat-messages{
                 position: relative;
@@ -256,6 +250,14 @@ position: absolute;
      right: 238px;
 }
 }
+@media (max-width: 500px ) {
+    #chat-container {
+        align-content: center;
+        margin: auto;
+        
+    }
+   
+}
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -276,13 +278,7 @@ position: absolute;
 
 
 
-        <div class="dropdown">
-            <button>API changes:</button>
-            <select id="userDropdown" onchange="selectUser()">
-                <option value="voiceflow">Voiceflowai</option>
-                <option value="relevanceai" data-url= "testvoice.html">Relevance AI</option>
-            </select>
-        </div>
+       
 
         <script>
 
@@ -319,7 +315,7 @@ position: absolute;
     document.getElementById('overlay').style.display = 'none';
   }
 </script>
-<a id = "Report" href= "https://forms.gle/oNUpVPp7xvdY8JvM9" target="_blank">Report a bug</a>
+
 
             <p class="test">  Beta Testing: 0.0.1 </p>
     <script defer>
@@ -360,5 +356,7 @@ position: absolute;
 
        
     </script>
+    <a id = "Report" href= "https://forms.gle/oNUpVPp7xvdY8JvM9" target="_blank">Report a bug</a>
+
 </body>
 </html>
